@@ -47,9 +47,6 @@ def fetch_historical_news(currencies=None, start_date=None, end_date=None, filte
             response.raise_for_status()
             data = response.json()
 
-            if not data.get('results'):
-                break
-
             # Filter results by date
             filtered_results = []
             for item in data['results']:
@@ -63,18 +60,22 @@ def fetch_historical_news(currencies=None, start_date=None, end_date=None, filte
 
             all_results.extend(filtered_results)
 
+            if not filtered_results or len(filtered_results) == 0:
+                print("No more results to fetch.")
+                break
+
             # Check if we should continue to next page
             next_page = data.get('next')
             if not next_page or page_count >= max_pages:
                 break
 
             page_count += 1
-            # Rate limiting - 1 request per second
-            time.sleep(1)
+            # Rate limiting - 1 request per second            
 
         except requests.exceptions.RequestException as e:
             print(f"Error fetching data: {e}")
             break
+        time.sleep(3)
 
     return all_results
 
@@ -127,12 +128,16 @@ def run(start_date, end_date, max_pages=10):
         print(df['sentiment'].value_counts(normalize=True) * 100)
         
         # Save to CSV with timestamp
-        filename = f"historical_crypto_news_{datetime.now().strftime('%Y%m%d_%H%M')}.csv"
+        filename = f"historical_crypto_news_{start_date}.csv"
+        print(f"\nSaving data to {filename}...")
         df.to_csv(filename, index=False)
         print(f"\nData saved to {filename}")
+
+        # Sleep for 5 seconds before finishing
+        time.sleep(5)
         
         # Optional: Save daily counts
-        daily_counts.to_csv(f"data\\daily_counts_{datetime.now().strftime('%Y%m%d_%H%M')}.csv")
+        # daily_counts.to_csv(f"daily_counts_{datetime.now().strftime('%Y%m%d_%H%M')}.csv")
 
 if __name__ == "__main__":        
     # Set date range for last 30 days with timezone awareness

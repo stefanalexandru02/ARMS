@@ -1,11 +1,12 @@
 from datetime import datetime, timedelta
+import time
 from dateutil.relativedelta import relativedelta
 from crypto_historical import run
 
 max_pages_per_day = 10
 
 def generate_date_pairs():
-    start_date = datetime(2019, 1, 1)
+    start_date = datetime(2025, 1, 1)
     end_date = datetime.today()
     date_pairs = []
 
@@ -28,4 +29,5 @@ for start_date, end_date in generate_date_pairs():
     # Convert string dates back to datetime objects
     run(start_date=datetime.strptime(start_date, '%Y-%m-%d'), end_date=datetime.strptime(end_date, '%Y-%m-%d'), max_pages=max_pages_per_day)
 
+    time.sleep(3)  # Sleep for 3 seconds between requests
 print("All data downloaded successfully.")
