@@ -8,7 +8,7 @@ from datetime import timezone
 
 load_dotenv()
 
-def fetch_historical_news(currencies=None, start_date=None, end_date=None, filter=None):
+def fetch_historical_news(currencies=None, start_date=None, end_date=None, filter=None, max_pages=10):
     """
     Fetch historical news data from CryptoPanic API with pagination
     """
@@ -65,7 +65,7 @@ def fetch_historical_news(currencies=None, start_date=None, end_date=None, filte
 
             # Check if we should continue to next page
             next_page = data.get('next')
-            if not next_page:
+            if not next_page or page_count >= max_pages:
                 break
 
             page_count += 1
@@ -95,14 +95,9 @@ def process_historical_data(data):
     df = pd.DataFrame(news_items)
     return df
 
-if __name__ == "__main__":
-    # Example usage
+def run(start_date, end_date, max_pages=10):
     currencies = ['BTC', 'ETH']
-    
-    # Set date range for last 30 days with timezone awareness
-    end_date = datetime.now(timezone.utc)
-    start_date = end_date - timedelta(days=30)
-    
+
     print(f"Fetching historical crypto news from {start_date.date()} to {end_date.date()}")
     print(f"Currencies: {', '.join(currencies)}")
     
@@ -111,7 +106,8 @@ if __name__ == "__main__":
         currencies=currencies,
         start_date=start_date,
         end_date=end_date,
-        filter='hot'
+        filter='hot',
+        max_pages=max_pages
     )
     
     if historical_data:
@@ -136,4 +132,11 @@ if __name__ == "__main__":
         print(f"\nData saved to {filename}")
         
         # Optional: Save daily counts
-        daily_counts.to_csv(f"daily_counts_{datetime.now().strftime('%Y%m%d_%H%M')}.csv")
+        daily_counts.to_csv(f"data\\daily_counts_{datetime.now().strftime('%Y%m%d_%H%M')}.csv")
+
+if __name__ == "__main__":        
+    # Set date range for last 30 days with timezone awareness
+    end_date = datetime.now(timezone.utc)
+    start_date = end_date - timedelta(days=30)
+
+    run(start_date, end_date)
