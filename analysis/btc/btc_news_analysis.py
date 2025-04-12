@@ -469,10 +469,33 @@ def analyze_price_direction_vs_polarity(btc_df, news_df):
     if len(valid_data) > 90:
         recent_data = valid_data.iloc[-90:]
         
-        plt.figure(figsize=(14, 9))
+        # Calculate recent lag correlations
+        recent_lag_correlations = {}
+        for lag in range(-5, 6):  # -5 to +5 days
+            if lag < 0:
+                # Sentiment lagging price (does price predict sentiment?)
+                shifted_polarity = recent_data['polarity'].shift(-lag)
+                corr = recent_data['price_direction'].corr(shifted_polarity)
+                lag_type = f"Price leads Sentiment by {abs(lag)} day(s)"
+            elif lag > 0:
+                # Price lagging sentiment (does sentiment predict price?)
+                shifted_price = recent_data['price_direction'].shift(lag)
+                corr = recent_data['polarity'].corr(shifted_price)
+                lag_type = f"Sentiment leads Price by {lag} day(s)"
+            else:
+                # Same day
+                corr = recent_data['polarity'].corr(recent_data['price_direction'])
+                lag_type = "Same day"
+            
+            recent_lag_correlations[lag_type] = corr
+        
+        # Find the lag with the strongest correlation
+        strongest_lag = max(recent_lag_correlations.items(), key=lambda x: abs(x[1]))
+        
+        plt.figure(figsize=(14, 12))  # Increased height for the lag correlation plot
         
         # Plot Price Direction
-        ax1 = plt.subplot(2, 1, 1)
+        ax1 = plt.subplot(3, 1, 1)
         colors = ['red' if x < 0 else 'green' if x > 0 else 'gray' for x in recent_data['price_direction']]
         ax1.bar(recent_data['date'], recent_data['price_direction'], color=colors, alpha=0.7)
         ax1.set_ylabel('Price Direction\n(1=Up, -1=Down)')
@@ -481,7 +504,7 @@ def analyze_price_direction_vs_polarity(btc_df, news_df):
         ax1.set_title('Recent Bitcoin Price Direction vs News Sentiment (Last 90 Days)')
         
         # Plot Sentiment Polarity
-        ax2 = plt.subplot(2, 1, 2, sharex=ax1)
+        ax2 = plt.subplot(3, 1, 2, sharex=ax1)
         ax2.plot(recent_data['date'], recent_data['polarity'], color='blue', linewidth=2)
         ax2.fill_between(recent_data['date'], 0, recent_data['polarity'], color='blue', alpha=0.2)
         ax2.axhline(y=0, color='black', linestyle='-', linewidth=0.5)
@@ -489,8 +512,45 @@ def analyze_price_direction_vs_polarity(btc_df, news_df):
         ax2.axhline(y=recent_mean, color='blue', linestyle='--', 
                   linewidth=1, label=f'Mean Polarity: {recent_mean:.3f}')
         ax2.set_ylabel('Sentiment Polarity')
-        ax2.set_xlabel('Date')
         ax2.legend()
+        
+        # Plot lag correlation
+        ax3 = plt.subplot(3, 1, 3)
+        lags = list(range(-5, 6))
+        lag_values = []
+        for lag in lags:
+            if lag < 0:
+                key = f"Price leads Sentiment by {abs(lag)} day(s)"
+            elif lag > 0:
+                key = f"Sentiment leads Price by {lag} day(s)"
+            else:
+                key = "Same day"
+            lag_values.append(recent_lag_correlations[key])
+        
+        bars = ax3.bar(lags, lag_values)
+        
+        # Color the bars based on whether it's price leading sentiment or sentiment leading price
+        for i, bar in enumerate(bars):
+            if lags[i] < 0:  # Price leads sentiment
+                bar.set_color('red')
+            elif lags[i] > 0:  # Sentiment leads price
+                bar.set_color('green')
+            else:  # Same day
+                bar.set_color('blue')
+        
+        ax3.axhline(y=0, color='black', linestyle='-', alpha=0.3)
+        ax3.set_xlabel('Lag (Negative = Price leads Sentiment, Positive = Sentiment leads Price)')
+        ax3.set_ylabel('Correlation')
+        ax3.set_title('Lag Correlation Analysis')
+        ax3.set_xticks(lags)
+        
+        # Annotate the strongest correlation
+        ax3.annotate(f"Strongest: {strongest_lag[0]}\nCorr: {strongest_lag[1]:.3f}",
+                   xy=(lags[list(recent_lag_correlations.values()).index(strongest_lag[1])], strongest_lag[1]),
+                   xytext=(0, 20 if strongest_lag[1] > 0 else -20),
+                   textcoords='offset points',
+                   arrowprops=dict(arrowstyle='->', connectionstyle='arc3,rad=.2'),
+                   bbox=dict(boxstyle='round,pad=0.5', fc='yellow', alpha=0.7))
         
         # Recent hit rate
         recent_hit_rate = recent_data['match'].mean() * 100
@@ -499,11 +559,12 @@ def analyze_price_direction_vs_polarity(btc_df, news_df):
         # Add text with recent stats
         props = dict(boxstyle='round', facecolor='white', alpha=0.8)
         recent_text = (f"Recent Hit Rate: {recent_hit_rate:.2f}%\n"
-                     f"Recent Correlation: {recent_corr:.3f}")
+                     f"Recent Correlation: {recent_corr:.3f}\n"
+                     f"Strongest Lag Correlation: {strongest_lag[0]} ({strongest_lag[1]:.3f})")
         ax2.text(0.02, 0.95, recent_text, transform=ax2.transAxes, fontsize=10,
                 verticalalignment='top', bbox=props)
         
-        # Format x-axis
+        # Format x-axis for the first two plots
         for ax in [ax1, ax2]:
             ax.xaxis.set_major_locator(mdates.WeekdayLocator(interval=2))
             ax.xaxis.set_major_formatter(mdates.DateFormatter('%d %b %Y'))
@@ -511,6 +572,32 @@ def analyze_price_direction_vs_polarity(btc_df, news_df):
         
         plt.tight_layout()
         plt.savefig('recent_price_direction_vs_polarity.png', dpi=300)
+        
+        # Create a second supplementary plot to visualize lagged polarity vs price direction
+        if strongest_lag[0] != "Same day" and abs(strongest_lag[1]) > 0.1:  # Only if there's a meaningful lag correlation
+            plt.figure(figsize=(14, 6))
+            
+            # Extract lag value from the strongest lag
+            if "Price leads Sentiment" in strongest_lag[0]:
+                lag_val = -int(strongest_lag[0].split("by")[1].split("day")[0].strip())
+                shifted_polarity = recent_data['polarity'].shift(-lag_val)
+                title = f"Price Direction Leading Sentiment by {abs(lag_val)} Days (Correlation: {strongest_lag[1]:.3f})"
+                shifted_series = shifted_polarity
+                original_series = recent_data['price_direction']
+            else:
+                lag_val = int(strongest_lag[0].split("by")[1].split("day")[0].strip()) 
+                shifted_price = recent_data['price_direction'].shift(lag_val)
+                title = f"Sentiment Leading Price Direction by {lag_val} Days (Correlation: {strongest_lag[1]:.3f})"
+                shifted_series = recent_data['polarity']
+                original_series = shifted_price
+            
+            plt.plot(recent_data['date'], original_series, 'b-', label='Original Series', linewidth=2)
+            plt.plot(recent_data['date'], shifted_series, 'r--', label='Shifted Series', linewidth=2)
+            plt.legend()
+            plt.title(title)
+            plt.grid(True, alpha=0.3)
+            plt.tight_layout()
+            plt.savefig('recent_lag_analysis.png', dpi=300)
     
     # Print summary statistics
     print("\n--- Price Direction vs Sentiment Polarity Analysis ---")
