@@ -347,6 +347,183 @@ def analyze_source_reliability(btc_df, news_df):
     plt.tight_layout()
     plt.savefig('source_reliability.png')
 
+def analyze_price_direction_vs_polarity(btc_df, news_df):
+    """
+    Create a plot showing the relationship between price direction (positive/negative) and sentiment polarity over time.
+    
+    :param btc_df: DataFrame with Bitcoin price data
+    :param news_df: DataFrame with news articles
+    :return: None (plots and prints results)
+    """
+    # Add price change column to Bitcoin data
+    btc_df['price_change'] = btc_df['close'].pct_change() * 100
+    btc_df['price_direction'] = btc_df['price_change'].apply(lambda x: 1 if x > 0 else -1 if x < 0 else 0)
+    
+    # Convert the date index of btc_df to a date object
+    btc_df['date'] = btc_df.index.date
+    
+    # Make sure news_df date is a date object
+    if hasattr(news_df['date'], 'dt'):
+        news_df['date'] = news_df['date'].dt.date
+    
+    # Group news articles by date and calculate average sentiment metrics
+    daily_news = news_df.groupby('date').agg({
+        'polarity': 'mean',
+    }).reset_index()
+    
+    # Merge price data with sentiment data
+    merged_data = pd.merge(btc_df, daily_news, on='date', how='left')
+    
+    # Filter data to only include days where we have both sentiment and price data
+    valid_data = merged_data.dropna(subset=['polarity', 'price_direction'])
+    
+    # Sort by date
+    valid_data = valid_data.sort_values('date')
+    
+    # Create a figure with price direction and polarity
+    plt.figure(figsize=(16, 10))
+    
+    # Plot Price Direction (as colored bars)
+    ax1 = plt.subplot(3, 1, 1)
+    colors = ['red' if x < 0 else 'green' if x > 0 else 'gray' for x in valid_data['price_direction']]
+    ax1.bar(valid_data['date'], valid_data['price_change'], color=colors, alpha=0.7)
+    ax1.axhline(y=0, color='black', linestyle='-', linewidth=0.5)
+    ax1.set_ylabel('Price Change (%)')
+    ax1.set_title('Bitcoin Price Change Direction and News Sentiment Polarity Over Time')
+    
+    # Add a legend for price direction
+    from matplotlib.patches import Patch
+    legend_elements = [
+        Patch(facecolor='green', alpha=0.7, label='Price Increase'),
+        Patch(facecolor='red', alpha=0.7, label='Price Decrease')
+    ]
+    ax1.legend(handles=legend_elements, loc='upper right')
+    
+    # Plot Price Direction as binary (1 for up, -1 for down)
+    ax2 = plt.subplot(3, 1, 2, sharex=ax1)
+    colors = ['red' if x < 0 else 'green' if x > 0 else 'gray' for x in valid_data['price_direction']]
+    ax2.bar(valid_data['date'], valid_data['price_direction'], color=colors, alpha=0.7)
+    ax2.set_ylabel('Price Direction\n(1=Up, -1=Down)')
+    ax2.set_yticks([-1, 0, 1])
+    ax2.set_yticklabels(['Down', 'Unchanged', 'Up'])
+    
+    # Plot Sentiment Polarity
+    ax3 = plt.subplot(3, 1, 3, sharex=ax1)
+    ax3.plot(valid_data['date'], valid_data['polarity'], color='blue', linewidth=1.5)
+    ax3.fill_between(valid_data['date'], 0, valid_data['polarity'], 
+                    color='blue', alpha=0.2)
+    ax3.axhline(y=0, color='black', linestyle='-', linewidth=0.5)
+    mean_polarity = valid_data['polarity'].mean()
+    ax3.axhline(y=mean_polarity, color='blue', linestyle='--', 
+               linewidth=1, label=f'Mean Polarity: {mean_polarity:.3f}')
+    ax3.set_ylabel('Sentiment Polarity')
+    ax3.set_xlabel('Date')
+    ax3.legend()
+    
+    # Calculate hit rate (% of times polarity correctly predicts price direction)
+    valid_data['polarity_direction'] = valid_data['polarity'].apply(lambda x: 1 if x > 0 else -1 if x < 0 else 0)
+    valid_data['match'] = (valid_data['polarity_direction'] == valid_data['price_direction']).astype(int)
+    hit_rate = valid_data['match'].mean() * 100
+    
+    # Calculate correlations for different lag periods
+    correlations = {}
+    for lag in range(-5, 6):  # -5 to +5 days
+        if lag < 0:
+            # Sentiment lagging price (does price predict sentiment?)
+            shifted_polarity = valid_data['polarity'].shift(-lag)
+            corr = valid_data['price_direction'].corr(shifted_polarity)
+            lag_type = f"Price leads Sentiment by {abs(lag)} day(s)"
+        elif lag > 0:
+            # Price lagging sentiment (does sentiment predict price?)
+            shifted_price = valid_data['price_direction'].shift(lag)
+            corr = valid_data['polarity'].corr(shifted_price)
+            lag_type = f"Sentiment leads Price by {lag} day(s)"
+        else:
+            # Same day
+            corr = valid_data['polarity'].corr(valid_data['price_direction'])
+            lag_type = "Same day"
+        
+        correlations[lag_type] = corr
+    
+    # Add a text box with hit rate and correlation info
+    props = dict(boxstyle='round', facecolor='white', alpha=0.8)
+    info_text = (f"Hit Rate (Polarity Direction = Price Direction): {hit_rate:.2f}%\n\n"
+                f"Correlations:\n"
+                f"Same day: {correlations['Same day']:.3f}\n"
+                f"Sentiment leads Price by 1 day: {correlations['Sentiment leads Price by 1 day(s)']:.3f}\n"
+                f"Price leads Sentiment by 1 day: {correlations['Price leads Sentiment by 1 day(s)']:.3f}")
+    
+    ax3.text(0.02, 0.05, info_text, transform=ax1.transAxes, fontsize=10,
+            verticalalignment='bottom', bbox=props)
+    
+    # Format x-axis to avoid overcrowding
+    for ax in [ax1, ax2, ax3]:
+        ax.xaxis.set_major_locator(mdates.MonthLocator(interval=2))
+        ax.xaxis.set_major_formatter(mdates.DateFormatter('%b %Y'))
+        plt.setp(ax.get_xticklabels(), rotation=45, ha='right')
+    
+    plt.tight_layout()
+    plt.savefig('price_direction_vs_polarity.png', dpi=300)
+    
+    # Create an additional plot showing the relationship for the most recent 90 days
+    if len(valid_data) > 90:
+        recent_data = valid_data.iloc[-90:]
+        
+        plt.figure(figsize=(14, 9))
+        
+        # Plot Price Direction
+        ax1 = plt.subplot(2, 1, 1)
+        colors = ['red' if x < 0 else 'green' if x > 0 else 'gray' for x in recent_data['price_direction']]
+        ax1.bar(recent_data['date'], recent_data['price_direction'], color=colors, alpha=0.7)
+        ax1.set_ylabel('Price Direction\n(1=Up, -1=Down)')
+        ax1.set_yticks([-1, 0, 1])
+        ax1.set_yticklabels(['Down', 'Unchanged', 'Up'])
+        ax1.set_title('Recent Bitcoin Price Direction vs News Sentiment (Last 90 Days)')
+        
+        # Plot Sentiment Polarity
+        ax2 = plt.subplot(2, 1, 2, sharex=ax1)
+        ax2.plot(recent_data['date'], recent_data['polarity'], color='blue', linewidth=2)
+        ax2.fill_between(recent_data['date'], 0, recent_data['polarity'], color='blue', alpha=0.2)
+        ax2.axhline(y=0, color='black', linestyle='-', linewidth=0.5)
+        recent_mean = recent_data['polarity'].mean()
+        ax2.axhline(y=recent_mean, color='blue', linestyle='--', 
+                  linewidth=1, label=f'Mean Polarity: {recent_mean:.3f}')
+        ax2.set_ylabel('Sentiment Polarity')
+        ax2.set_xlabel('Date')
+        ax2.legend()
+        
+        # Recent hit rate
+        recent_hit_rate = recent_data['match'].mean() * 100
+        recent_corr = recent_data['polarity'].corr(recent_data['price_direction'])
+        
+        # Add text with recent stats
+        props = dict(boxstyle='round', facecolor='white', alpha=0.8)
+        recent_text = (f"Recent Hit Rate: {recent_hit_rate:.2f}%\n"
+                     f"Recent Correlation: {recent_corr:.3f}")
+        ax2.text(0.02, 0.95, recent_text, transform=ax2.transAxes, fontsize=10,
+                verticalalignment='top', bbox=props)
+        
+        # Format x-axis
+        for ax in [ax1, ax2]:
+            ax.xaxis.set_major_locator(mdates.WeekdayLocator(interval=2))
+            ax.xaxis.set_major_formatter(mdates.DateFormatter('%d %b %Y'))
+            plt.setp(ax.get_xticklabels(), rotation=45, ha='right')
+        
+        plt.tight_layout()
+        plt.savefig('recent_price_direction_vs_polarity.png', dpi=300)
+    
+    # Print summary statistics
+    print("\n--- Price Direction vs Sentiment Polarity Analysis ---")
+    print(f"Hit Rate (Polarity direction matches price direction): {hit_rate:.2f}%")
+    print("\nCorrelations between sentiment polarity and price direction:")
+    for lag_type, corr in sorted(correlations.items()):
+        print(f"  {lag_type}: {corr:.4f}")
+    
+    # Perform point-biserial correlation (special case of Pearson correlation when one variable is dichotomous)
+    from scipy.stats import pointbiserialr
+    pb_corr, p_value = pointbiserialr(valid_data['price_direction'], valid_data['polarity'])
+    print(f"\nPoint-Biserial Correlation: {pb_corr:.4f} (p-value: {p_value:.4f})")
+
 def main():
     # Load the Bitcoin OHLCV data
     btc_df = load_data('BTCUSDT', '1d')
@@ -371,6 +548,9 @@ def main():
     
     # Analyze reliability of different news sources
     analyze_source_reliability(btc_df, news_df)
+    
+    # Analyze price direction vs polarity
+    analyze_price_direction_vs_polarity(btc_df, news_df)
 
 if __name__ == "__main__":
     main()
