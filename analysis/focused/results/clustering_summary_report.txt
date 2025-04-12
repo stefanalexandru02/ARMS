@@ -1,0 +1,67 @@
+=== CRYPTOCURRENCY NEWS CLUSTERING ANALYSIS SUMMARY ===
+
+Generated on: 2025-04-12 20:47:34
+Total articles analyzed: 31037
+
+=== SENTIMENT CLUSTERING SUMMARY ===
+
+Negative Cluster: 18406 articles (59.3%)
+Positive Cluster: 10521 articles (33.9%)
+Neutral Cluster: 2110 articles (6.8%)
+
+Key insights from sentiment analysis:
+- Articles with positive sentiment tend to focus on: Bitcoin, Blockchain Tech
+- Articles with negative sentiment tend to focus on: Bitcoin, Litecoin
+
+
+=== CRYPTOCURRENCY CLUSTERING SUMMARY ===
+
+Bitcoin Cluster: 9968 articles (32.1%)
+Blockchain Tech Cluster: 9517 articles (30.7%)
+Litecoin Cluster: 9278 articles (29.9%)
+Ethereum Cluster: 2274 articles (7.3%)
+
+Key insights from cryptocurrency analysis:
+- The largest cryptocurrency clusters are focused on: Bitcoin
+
+
+=== NEWS SOURCE CLUSTERING SUMMARY ===
+
+CoinTelegraph Cluster: 12777 articles (41.2%)
+CryptoNews Cluster: 9908 articles (31.9%)
+CryptoPotato Cluster: 7439 articles (24.0%)
+CryptoNews Group Cluster: 556 articles (1.8%)
+CoinTelegraph Group Cluster: 234 articles (0.8%)
+CryptoPotato Group Cluster: 123 articles (0.4%)
+
+Key insights from source analysis:
+- Different source clusters show varying sentiment biases
+
+
+=== COMBINED ANALYSIS INSIGHTS ===
+
+- Most positive coverage: Ethereum (avg. polarity: 0.07)
+- Most negative coverage: Bitcoin (avg. polarity: 0.06)
+- Most positive sources: CryptoNews Group (avg. polarity: 0.08)
+- Most negative sources: CryptoPotato Group (avg. polarity: 0.05)
+
+Source preferences for cryptocurrency topics:
+- CoinTelegraph focuses on: Blockchain Tech (5511 articles)
+- CryptoNews focuses on: Litecoin (3893 articles)
+- CryptoPotato focuses on: Litecoin (4394 articles)
+
+
+=== CONCLUSIONS ===
+
+1. The sentiment analysis reveals distinct clusters in how cryptocurrency news is framed,
+   with clear differences in the emotions conveyed across articles.
+
+2. Cryptocurrency clustering shows that coverage tends to group around major coins
+   and blockchain concepts rather than being evenly distributed.
+
+3. The source analysis demonstrates that different news outlets have recognizable
+   patterns in their cryptocurrency coverage, with some focusing on specific coins
+   or displaying particular sentiment biases.
+
+4. The combined analysis reveals important relationships between the source of news,
+   the cryptocurrency being covered, and the sentiment of the coverage.

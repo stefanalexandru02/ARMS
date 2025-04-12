@@ -1,0 +1,234 @@
+=== CRYPTOCURRENCY NEWS CLUSTER ANALYSIS ===
+
+Generated on: 2025-04-12 20:45:46
+Total clusters: 5
+
+--- CLUSTER 0: Objective Negative Bitcoin (CoinTelegraph) ---
+Size: 15786 articles
+
+SENTIMENT:
+  Average polarity: -0.03
+  Average subjectivity: 0.20
+  Sentiment distribution:
+    - neutral: 7852 articles (49.7%)
+    - negative: 4822 articles (30.5%)
+    - positive: 3112 articles (19.7%)
+
+COMMON SUBJECTS:
+  - bitcoin: 5224 articles
+  - altcoin: 4811 articles
+  - blockchain: 3249 articles
+
+COMMON SOURCES:
+  - CoinTelegraph: 6729 articles
+  - CryptoNews: 5069 articles
+  - CryptoPotato: 3988 articles
+
+TONALITY:
+  Title tonality:
+    - neutral: 115 articles
+    - positive: 11 articles
+    - Positive: 6 articles
+    - unknown: 6 articles
+    - Neutral: 4 articles
+    - Negative: 2 articles
+    - negative: 1 articles
+  Text tonality:
+    - neutral: 115 articles
+    - negative: 7 articles
+    - Neutral: 7 articles
+    - unknown: 7 articles
+    - positive: 5 articles
+    - Positive: 3 articles
+    - Negative: 2 articles
+
+SAMPLE TITLES:
+  1. Bitcoin Miners Consider Hedging Options for Revenue Stability
+  2. SOL Drops as Thousands of Wallets Attacked on Solana
+  3. Today in Crypto: 'Many Existing Stablecoins Would Not Meet Coming Standards', Fireblocks to Launch Off-exchange Service, Stellar & USDC Added to Wirex Wallet
+  4. India’s Central Bank Is Constantly Engaged With the Government on Crypto: RBI Chief\xa0
+  5. Bitcoin Price and Ethereum Prediction; Fantom Pumps 28% in Seven Days
+
+----------------------------------------
+
+--- CLUSTER 1: Positive Bitcoin (CryptoNews) ---
+Size: 1416 articles
+
+SENTIMENT:
+  Average polarity: 0.08
+  Average subjectivity: 0.36
+  Sentiment distribution:
+    - positive: 693 articles (48.9%)
+    - neutral: 449 articles (31.7%)
+    - negative: 274 articles (19.4%)
+
+COMMON SUBJECTS:
+  - bitcoin: 454 articles
+  - altcoin: 425 articles
+  - blockchain: 384 articles
+
+COMMON SOURCES:
+  - CryptoNews: 633 articles
+  - CoinTelegraph: 462 articles
+  - CryptoPotato: 321 articles
+
+TONALITY:
+  Title tonality:
+    - positive: 797 articles
+    - neutral: 552 articles
+    - negative: 48 articles
+    - Neutral: 7 articles
+    - Negative: 5 articles
+    - Positive: 5 articles
+    - unknown: 2 articles
+  Text tonality:
+    - neutral: 873 articles
+    - positive: 415 articles
+    - negative: 104 articles
+    - Neutral: 8 articles
+    - unknown: 6 articles
+    - Positive: 5 articles
+    - Negative: 4 articles
+
+SAMPLE TITLES:
+  1. Kazakhstan’s NPC Officially Rolls Out State-backed CBDC in Partnership With Visa and Mastercard
+  2. Bitcoin Price Prediction as BTC Falls to $26,000 Support Level \x93 Dip-Buying Opportunity?
+  3. Ethereum Censorship Concerns Raised as Block Builders Comply with OFAC Sanctions
+  4. Binance Aids Thai Police in Crackdown on Crypto-Related Criminal Networks
+  5. Worldcoin releases audit reports showing resolved security issues
+
+----------------------------------------
+
+--- CLUSTER 2: Subjective Strongly Positive Bitcoin (CoinTelegraph) ---
+Size: 9171 articles
+
+SENTIMENT:
+  Average polarity: 0.23
+  Average subjectivity: 0.57
+  Sentiment distribution:
+    - positive: 8057 articles (87.9%)
+    - neutral: 778 articles (8.5%)
+    - negative: 336 articles (3.7%)
+
+COMMON SUBJECTS:
+  - bitcoin: 2897 articles
+  - altcoin: 2721 articles
+  - blockchain: 1858 articles
+
+COMMON SOURCES:
+  - CoinTelegraph: 4260 articles
+  - CryptoNews: 2798 articles
+  - CryptoPotato: 2113 articles
+
+TONALITY:
+  Title tonality:
+    - neutral: 66 articles
+    - positive: 8 articles
+    - Neutral: 4 articles
+    - negative: 3 articles
+    - Positive: 2 articles
+    - unknown: 1 articles
+  Text tonality:
+    - neutral: 69 articles
+    - negative: 5 articles
+    - unknown: 2 articles
+    - Negative: 2 articles
+    - Positive: 2 articles
+    - Neutral: 2 articles
+    - positive: 2 articles
+
+SAMPLE TITLES:
+  1. SEC Issues Wells Notice Against Coinbase for Listing Unregistered Securities
+  2. Is the bottom in? Data shows Bitcoin derivatives entering the ‘capitulation’ zone
+  3. Jump Crypto denies rumors that it intends to wind down due to FTX losses
+  4. Bitcoin and Ethereum Reverse Gains, TRX and DCR Rally
+  5. Alchemy Pay gains 77% after exchange listings and cross-chain integrations
+
+----------------------------------------
+
+--- CLUSTER 3: Positive Bitcoin (CryptoNews) ---
+Size: 2843 articles
+
+SENTIMENT:
+  Average polarity: 0.07
+  Average subjectivity: 0.34
+  Sentiment distribution:
+    - positive: 1404 articles (49.4%)
+    - neutral: 922 articles (32.4%)
+    - negative: 517 articles (18.2%)
+
+COMMON SUBJECTS:
+  - bitcoin: 983 articles
+  - blockchain: 831 articles
+  - altcoin: 734 articles
+
+COMMON SOURCES:
+  - CryptoNews: 1181 articles
+  - CoinTelegraph: 983 articles
+  - CryptoPotato: 679 articles
+
+TONALITY:
+  Title tonality:
+    - neutral: 1746 articles
+    - positive: 981 articles
+    - Neutral: 48 articles
+    - negative: 28 articles
+    - Positive: 22 articles
+    - Negative: 15 articles
+  Text tonality:
+    - positive: 1672 articles
+    - neutral: 1065 articles
+    - Negative: 29 articles
+    - Neutral: 29 articles
+    - Positive: 27 articles
+    - unknown: 15 articles
+    - negative: 6 articles
+
+SAMPLE TITLES:
+  1. Platypus Finance recovers 90% of assets lost in exploit
+  2. Bitcoin Price Prediction: BTC Surges 9%; BlackRock & Grayscale Boost ETF Efforts
+  3. South Korea’s Crypto Craze: 6 Million Investors and the Rise of Centralized Exchanges (Survey)
+  4. Vitalik Buterin’s privacy pool idea is interesting,  but it’s just the start
+  5. Solana NFTs Eclipse Ethereum in Trading Volume Amid Surge
+
+----------------------------------------
+
+--- CLUSTER 4: Positive Blockchain (CryptoNews) ---
+Size: 1821 articles
+
+SENTIMENT:
+  Average polarity: 0.03
+  Average subjectivity: 0.35
+  Sentiment distribution:
+    - positive: 698 articles (38.3%)
+    - negative: 569 articles (31.2%)
+    - neutral: 554 articles (30.4%)
+
+COMMON SUBJECTS:
+  - blockchain: 625 articles
+  - altcoin: 587 articles
+  - bitcoin: 410 articles
+
+COMMON SOURCES:
+  - CryptoNews: 778 articles
+  - CoinTelegraph: 576 articles
+  - CryptoPotato: 467 articles
+
+TONALITY:
+  Title tonality:
+    - negative: 1205 articles
+    - neutral: 614 articles
+  Text tonality:
+    - negative: 1256 articles
+    - neutral: 558 articles
+    - unknown: 6 articles
+
+SAMPLE TITLES:
+  1. BALD token developer denies rug pull as price falls 85% post-launch
+  2. Bitcoin Dumps 5% in an Hour, Why Are Crypto Markets Tanking?
+  3. Over 70% of Spanish Crypto Traders Declared Losses in FY2022 \x93 Report
+  4. Spot Bitcoin ETF will be ‘bloodbath’ for crypto exchanges, analyst says
+  5. Curve Finance founder's $100M debt could trigger a DeFi implosion: Report
+
+----------------------------------------
+

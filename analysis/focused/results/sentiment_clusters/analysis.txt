@@ -1,0 +1,84 @@
+=== SENTIMENT CLUSTER ANALYSIS ===
+
+Generated on: 2025-04-12 20:44:24
+
+--- NEGATIVE CLUSTER ---
+Size: 18406 articles
+Average Polarity: -0.0325
+Average Subjectivity: 0.2035
+Dominant Title Tonality: neutral
+Dominant Text Tonality: neutral
+
+Top Crypto Subjects:
+  - Bitcoin: 5927 articles (32.2%)
+  - Litecoin: 5615 articles (30.5%)
+  - Blockchain Tech: 5559 articles (30.2%)
+  - Ethereum: 1305 articles (7.1%)
+
+Top Sources:
+  - CoinTelegraph: 7614 articles (41.4%)
+  - CryptoNews: 6178 articles (33.6%)
+  - CryptoPotato: 4614 articles (25.1%)
+
+Sample Titles:
+  1. Binance and Coinbase Market Shares at Stake Amidst Regulatory Turmoil: Data
+  2. Citi Bank Report: Most Global Security Firms Back CBDCs For Faster Payments
+  3. Solana Price Prediction \x93 Can SOL Recover as it Falls 40% in a Week?
+  4. SEC Delays Decision on Bitcoin ETF Applications from BlackRock, Invesco and Bitwise
+  5. Lelantus Spark: Redefining Blockchain Privacy
+
+--------------------------------------------------
+
+--- NEUTRAL CLUSTER ---
+Size: 2110 articles
+Average Polarity: 0.0813
+Average Subjectivity: 0.3528
+Dominant Title Tonality: neutral
+Dominant Text Tonality: positive
+
+Top Crypto Subjects:
+  - Bitcoin: 724 articles (34.3%)
+  - Blockchain Tech: 685 articles (32.5%)
+  - Litecoin: 586 articles (27.8%)
+  - Ethereum: 115 articles (5.5%)
+
+Top Sources:
+  - CryptoNews: 874 articles (41.4%)
+  - CoinTelegraph: 689 articles (32.7%)
+  - CryptoPotato: 547 articles (25.9%)
+
+Sample Titles:
+  1. US GAO explores blockchain for SBA’s small business programs oversight
+  2. Presidential Candidate Ramaswamy Says Grayscale’s Win ‘Clears a Path to Keep BTC in the US’
+  3. Blockchain for travel industry: Discover Camino Network
+  4. Bitcoin Balances on Exchanges Have Reduced to 2018 Levels: Bitfinex Report
+  5. Bitcoin market cap overtakes Berkshire Hathaway, soars past $800B
+
+--------------------------------------------------
+
+--- POSITIVE CLUSTER ---
+Size: 10521 articles
+Average Polarity: 0.2289
+Average Subjectivity: 0.5692
+Dominant Title Tonality: positive
+Dominant Text Tonality: neutral
+
+Top Crypto Subjects:
+  - Bitcoin: 3317 articles (31.5%)
+  - Blockchain Tech: 3273 articles (31.1%)
+  - Litecoin: 3077 articles (29.2%)
+  - Ethereum: 854 articles (8.1%)
+
+Top Sources:
+  - CoinTelegraph: 4707 articles (44.7%)
+  - CryptoNews: 3407 articles (32.4%)
+  - CryptoPotato: 2407 articles (22.9%)
+
+Sample Titles:
+  1. Bored Apes founders propose new model for NFT creator royalties
+  2. Crypto Fuels Illicit Fentanyl Trade, Report Reveals
+  3. Harmony Attackers Attempt to Launder Another $27 Million
+  4. Here’s how to prevent NFT theft, according to industry professionals
+  5. Cryptojacking Attacks Skyrocketed by 400% in H1 2023: SonicWall Report
+
+--------------------------------------------------

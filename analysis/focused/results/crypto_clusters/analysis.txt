@@ -1,0 +1,135 @@
+=== CRYPTOCURRENCY CLUSTER ANALYSIS ===
+
+Generated on: 2025-04-12 20:46:12
+
+--- BITCOIN CLUSTER ---
+Size: 9968 articles
+
+Crypto Categories:
+  - Bitcoin: 9968 articles (100.0%)
+
+Average Sentiment Polarity: 0.0623
+Sentiment Distribution:
+  - positive: 4497 articles (45.1%)
+  - neutral: 3259 articles (32.7%)
+  - negative: 2212 articles (22.2%)
+
+Top Sources:
+  - CoinTelegraph: 5393 articles (54.1%)
+  - CryptoNews: 2618 articles (26.3%)
+  - CryptoPotato: 1957 articles (19.6%)
+
+Top Verbs:
+  - is: 20 occurrences
+  - predicts: 17 occurrences
+  - has: 13 occurrences
+  - prediction: 12 occurrences
+  - surged: 12 occurrences
+
+Sample Titles:
+  1. Bitcoin mining can help reduce up to 8% of global emissions: Study
+  2. Largest Bitcoin Fraud Scheme Results in $3.4B Penalty in a Case Brought by CFTC
+  3. How does the economy work?
+  4. SpaceX sold $373M worth of Bitcoin acquired in 2021-2022: Report
+  5. ETF provider WisdomTree launches Solana, Cardano, Polkadot ETPs
+
+--------------------------------------------------
+
+--- BLOCKCHAIN TECH CLUSTER ---
+Size: 9517 articles
+
+Crypto Categories:
+  - Blockchain Tech: 9517 articles (100.0%)
+
+Average Sentiment Polarity: 0.0654
+Sentiment Distribution:
+  - positive: 4346 articles (45.7%)
+  - neutral: 3366 articles (35.4%)
+  - negative: 1805 articles (19.0%)
+
+Top Sources:
+  - CoinTelegraph: 5518 articles (58.0%)
+  - CryptoNews: 3297 articles (34.6%)
+  - CryptoPotato: 702 articles (7.4%)
+
+Top Verbs:
+  - has: 33 occurrences
+  - announced: 24 occurrences
+  - launches: 23 occurrences
+  - is: 18 occurrences
+  - announces: 18 occurrences
+
+Sample Titles:
+  1. 4 NFTs Stolen From Crypto Entrepreneur Jason Falovitch Worth $150k
+  2. Court Approves Genesis and FTX $175 Million Settlement Deal Despite Outrage from Creditors
+  3. FTX CEO Suggests Restart Plans for the Exchange in New Compensation Report
+  4. ‘Unique phenomenon’: All 5B toncoins mined on PoS TON blockchain
+  5. Level Finance confirms $1M exploit due to buggy smart contract
+
+--------------------------------------------------
+
+--- ETHEREUM CLUSTER ---
+Size: 2274 articles
+
+Crypto Categories:
+  - Ethereum: 2274 articles (100.0%)
+
+Average Sentiment Polarity: 0.0672
+Sentiment Distribution:
+  - positive: 983 articles (43.2%)
+  - neutral: 842 articles (37.0%)
+  - negative: 449 articles (19.7%)
+
+Top Sources:
+  - CoinTelegraph: 1380 articles (60.7%)
+  - CryptoNews: 469 articles (20.6%)
+  - CryptoPotato: 425 articles (18.7%)
+
+Top Verbs:
+  - launches: 12 occurrences
+  - announces: 5 occurrences
+  - hit: 4 occurrences
+  - joins: 3 occurrences
+  - launch: 3 occurrences
+
+Sample Titles:
+  1. SEC Charges NBA Hall of Famer Paul Pierce for Promoting Ethereum Max
+  2. Future of finance: US banks partner with crypto custodians
+  3. Big breath as Beacon Chain stops finalizing... and then recovers
+  4. Visa Deploys ‘Paymaster’ Contracts on Ethereum Testnest for Gasless Transactions
+  5. Shiba Inu’s Shibarium Ethereum L2 blockchain goes live on mainnet
+
+--------------------------------------------------
+
+--- LITECOIN CLUSTER ---
+Size: 9278 articles
+
+Crypto Categories:
+  - Litecoin: 9278 articles (100.0%)
+
+Average Sentiment Polarity: 0.0631
+Sentiment Distribution:
+  - positive: 4138 articles (44.6%)
+  - neutral: 3088 articles (33.3%)
+  - negative: 2052 articles (22.1%)
+
+Top Sources:
+  - CryptoPotato: 4484 articles (48.3%)
+  - CryptoNews: 4075 articles (43.9%)
+  - CoinTelegraph: 719 articles (7.7%)
+
+Top Verbs:
+  - is: 26 occurrences
+  - has: 22 occurrences
+  - announced: 14 occurrences
+  - launches: 11 occurrences
+  - Launches: 11 occurrences
+
+Sample Titles:
+  1. Today in Crypto: Wirex Signes Long-term Global Partnership with Visa, Bank of Brazil Says Citizens Can Pay Taxes with Crypto, MetaMask Warns Users About Phishing Attempts
+  2. Ethereum Crypto Price Prediction 2022 - Will ETH Surpass $2,000?
+  3. Binance Opens Regulated Crypto Platform in Kazakhstan Amid Regulatory Challenges in the West
+  4. Is it Too Late to Buy Fantom? Crypto Experts Give Their Fantom Price Predictions
+  5. Russian Central Bank Readies 'Real-world' CBDC Pilot \x93 Digital Ruble Launch Imminent?
+
+--------------------------------------------------

@@ -1,0 +1,139 @@
+=== NEWS SOURCE CLUSTER ANALYSIS ===
+
+Generated on: 2025-04-12 20:47:28
+
+--- COINTELEGRAPH CLUSTER ---
+Size: 12777 articles
+
+Top Sources:
+  - CoinTelegraph: 12777 articles (100.0%)
+
+Average Sentiment: Polarity=0.0624, Subjectivity=0.3520
+
+Crypto Focus:
+  - Blockchain Tech: 5511 articles (43.1%)
+  - Bitcoin: 5174 articles (40.5%)
+  - Ethereum: 1374 articles (10.8%)
+
+Sample Titles:
+  1. BoJ official says digital yen won’t be used to achieve negative interest rate
+  2. Bitcoin risks new lows as $20K looms amid dollar euro parity
+  3. Metaverse ETF ‘PUNK’ closing after betting against Meta’s vision
+  4. Bears control Bitcoin price, but traders say the $40K zone is still good ‘for longs’
+  5. Singapore plans joint crypto pilots with Japan, Switzerland and UK
+
+--------------------------------------------------
+
+--- COINTELEGRAPH GROUP CLUSTER ---
+Size: 234 articles
+
+Top Sources:
+  - CoinTelegraph: 223 articles (95.3%)
+  - CryptoNews: 11 articles (4.7%)
+
+Average Sentiment: Polarity=0.0595, Subjectivity=0.3798
+
+Crypto Focus:
+  - Bitcoin: 222 articles (94.9%)
+  - Ethereum: 5 articles (2.1%)
+  - Blockchain Tech: 4 articles (1.7%)
+
+Sample Titles:
+  1. Graffiti artists Street Cy₿er are painting the town Bitcoin
+  2. 3 reasons why Bitcoin's price is primed to hold the $30,000 level as support
+  3. Bitcoin’s bull move might not be over yet — Here are 3 reasons why
+  4. Bitcoin ignores CPI, FTX as BTC price hits September high near $26.6K
+  5. Price analysis 12/8: BTC, ETH, BNB, XRP, SOL, ADA, DOGE, AVAX, LINK, MATIC
+
+--------------------------------------------------
+
+--- CRYPTONEWS CLUSTER ---
+Size: 9908 articles
+
+Top Sources:
+  - CryptoNews: 9908 articles (100.0%)
+
+Average Sentiment: Polarity=0.0672, Subjectivity=0.3245
+
+Crypto Focus:
+  - Litecoin: 3893 articles (39.3%)
+  - Blockchain Tech: 2990 articles (30.2%)
+  - Bitcoin: 2564 articles (25.9%)
+
+Sample Titles:
+  1. Best Crypto to Buy Now 13 April \x93Â\xa0INJ, NEAR, ICP
+  2. Crypto Payments Company Wyre Reportedly Shutting Down Due to Market Downturn, Recently Valued at $1.5 Billion \x93 Bear Market Getting Worse?
+  3. Senator Warren and Rep. AOC Investigate Silicon Valley Bank's 'White Glove' Treatment of Crypto Firms \x93 Regulation Incoming?
+  4. Today in Crypto: MoonPay Partners with Mastercard, 64% of Injective Survey Respondents Trade on Both CEX and DEX, Chainstack Launches DeFi API
+  5. Sam Bankman-Fried Under Fire for Controversial Comments on DeFi Protocols
+
+--------------------------------------------------
+
+--- CRYPTONEWS GROUP CLUSTER ---
+Size: 556 articles
+
+Top Sources:
+  - CryptoNews: 540 articles (97.1%)
+  - CoinTelegraph: 9 articles (1.6%)
+  - CryptoPotato: 7 articles (1.3%)
+
+Average Sentiment: Polarity=0.0813, Subjectivity=0.3487
+
+Crypto Focus:
+  - Blockchain Tech: 309 articles (55.6%)
+  - Litecoin: 184 articles (33.1%)
+  - Bitcoin: 54 articles (9.7%)
+
+Sample Titles:
+  1. Major Stablecoin Issuer Tether Freezes $870,000 Linked to Criminal Activities in Israel and Ukraine
+  2. Vitalik Buterin Touts Plasma Technology; OMG Token Briefly Skyrockets 16%
+  3. Voyager Digital Sees $250 Million in Net Outflow Since Resuming Withdrawals
+  4. Tether's Paolo Ardoino Reveals Plans for Real-Time Reserve Data Reporting \x93 Will Transparency Lead to a New Bull Market?
+  5. Ethereum Price Prediction: ETH Up 0.5% with $6 Billion Trading Volume \x93 Are Whales Accumulating?
+
+--------------------------------------------------
+
+--- CRYPTOPOTATO CLUSTER ---
+Size: 7439 articles
+
+Top Sources:
+  - CryptoPotato: 7439 articles (100.0%)
+
+Average Sentiment: Polarity=0.0609, Subjectivity=0.3281
+
+Crypto Focus:
+  - Litecoin: 4394 articles (59.1%)
+  - Bitcoin: 1922 articles (25.8%)
+  - Blockchain Tech: 699 articles (9.4%)
+
+Sample Titles:
+  1. Gibraltar Introduces New Regulation Against Crypto Market Manipulation
+  2. This is Not What Ethereum is Built For, Vitalik Buterin Slams BAYC
+  3. Arbitrum DAO Passes Proposal to Allow ARB Token Staking
+  4. Litecoin’s Hash Rate Hits ATH as Halving Countdown Narrows and LTC Nears $100
+  5. Blockchain Platform 5ire to Expand its Operations With a $100 Million Fundraiser
+
+--------------------------------------------------
+
+--- CRYPTOPOTATO GROUP CLUSTER ---
+Size: 123 articles
+
+Top Sources:
+  - CryptoPotato: 122 articles (99.2%)
+  - CoinTelegraph: 1 articles (0.8%)
+
+Average Sentiment: Polarity=0.0491, Subjectivity=0.3429
+
+Crypto Focus:
+  - Litecoin: 86 articles (69.9%)
+  - Bitcoin: 32 articles (26.0%)
+  - Blockchain Tech: 4 articles (3.3%)
+
+Sample Titles:
+  1. New Crypto Shiba Memu Plans To Be an Unstoppable Marketing Powerhouse
+  2. US Presidential Candidate Robert F. Kennedy Holds Bitcoin (BTC)
+  3. Pro-XPR Lawyer Wonders Why Kevin O’Leary Is Still Obsessed With Binance and CZ
+  4. ZachXBT’s Latest Exposé on Pump and Dump Schemes Targets 4 Popular Crypto Traders
+  5. AI TalentGPT Stands Tall Against Memes Like Doge, Shiba, and Pepe
+
+--------------------------------------------------
